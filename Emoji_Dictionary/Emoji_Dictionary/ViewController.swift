@@ -37,6 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = emojis[indexPath.row]
         return cell
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
