@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zqJ-gv-kDr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Emoji_Dictionary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="Emoji_Dictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -41,18 +41,20 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tT1-x1-rfp" secondAttribute="bottom" id="zs4-JO-k6e"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Wxy-VE-dUz"/>
                     <connections>
                         <outlet property="tableview" destination="tT1-x1-rfp" id="0AK-8W-xjh"/>
+                        <segue destination="jgD-PC-CzM" kind="show" identifier="moveSegue" id="R65-38-nxL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="85.599999999999994" y="43.628185907046479"/>
+            <point key="canvasLocation" x="1024.8" y="43.628185907046479"/>
         </scene>
-        <!--View Controller-->
+        <!--Definition View Controller-->
         <scene sceneID="HaO-vm-tkM">
             <objects>
-                <viewController id="jgD-PC-CzM" sceneMemberID="viewController">
+                <viewController id="jgD-PC-CzM" customClass="DefinitionViewController" customModule="Emoji_Dictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ah2-Vb-IFj"/>
                         <viewControllerLayoutGuide type="bottom" id="S5C-mq-V1Q"/>
@@ -61,8 +63,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="🐏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A39-GA-LHI">
-                                <rect key="frame" x="75" y="125" width="246" height="240"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A39-GA-LHI">
+                                <rect key="frame" x="64.5" y="214" width="246" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="224" id="5Cx-YX-fLa"/>
                                     <constraint firstAttribute="height" constant="240" id="5Qi-4B-dRZ"/>
@@ -72,8 +74,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This is a horned sheep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pH-Rt-fi4">
-                                <rect key="frame" x="101" y="379" width="173" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a horned sheep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pH-Rt-fi4">
+                                <rect key="frame" x="101" y="504" width="173" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -86,12 +88,35 @@
                             <constraint firstItem="3pH-Rt-fi4" firstAttribute="top" secondItem="A39-GA-LHI" secondAttribute="bottom" constant="50" id="Lvn-EP-gRT"/>
                             <constraint firstItem="A39-GA-LHI" firstAttribute="centerX" secondItem="cn8-HQ-xpv" secondAttribute="centerX" id="Vyc-QJ-UOc"/>
                             <constraint firstItem="3pH-Rt-fi4" firstAttribute="centerX" secondItem="cn8-HQ-xpv" secondAttribute="centerX" id="flV-kf-Jhx"/>
+                            <constraint firstItem="A39-GA-LHI" firstAttribute="top" secondItem="ah2-Vb-IFj" secondAttribute="bottom" constant="150" id="rlR-Hi-flE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="definitionLabel" destination="3pH-Rt-fi4" id="ohq-na-Vgk"/>
+                        <outlet property="emojiLabel" destination="A39-GA-LHI" id="ZdN-7c-wuZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRk-Ru-j5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="727.20000000000005" y="-24.7376311844078"/>
+            <point key="canvasLocation" x="1852" y="33.733133433283363"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Af8-z0-Azx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zqJ-gv-kDr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hK0-oG-juB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uKp-ZJ-tKd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GW5-HJ-BE7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85.599999999999994" y="43.628185907046479"/>
         </scene>
     </scenes>
 </document>
