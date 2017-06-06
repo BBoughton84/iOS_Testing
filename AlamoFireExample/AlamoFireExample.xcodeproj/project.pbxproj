@@ -12,6 +12,8 @@
 		4B7CC7711EE719C000410BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B7CC76F1EE719C000410BB7 /* Main.storyboard */; };
 		4B7CC7731EE719C000410BB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B7CC7721EE719C000410BB7 /* Assets.xcassets */; };
 		4B7CC7761EE719C000410BB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B7CC7741EE719C000410BB7 /* LaunchScreen.storyboard */; };
+		4BDADE0E1EE73ECF000EF9D4 /* FoodClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADE0D1EE73ECF000EF9D4 /* FoodClass.swift */; };
+		4BDADE101EE75071000EF9D4 /* FoodInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADE0F1EE75071000EF9D4 /* FoodInfoTableViewCell.swift */; };
 		576554BCEB5BE4E1D5E2D706 /* Pods_AlamoFireExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26EB0EAE6FEAD734C845BE9 /* Pods_AlamoFireExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 		4B7CC7721EE719C000410BB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B7CC7751EE719C000410BB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B7CC7771EE719C000410BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BDADE0D1EE73ECF000EF9D4 /* FoodClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodClass.swift; sourceTree = "<group>"; };
+		4BDADE0F1EE75071000EF9D4 /* FoodInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodInfoTableViewCell.swift; sourceTree = "<group>"; };
 		E16164E4FEF8D2C1666C4FA9 /* Pods-AlamoFireExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamoFireExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamoFireExample/Pods-AlamoFireExample.debug.xcconfig"; sourceTree = "<group>"; };
 		F26EB0EAE6FEAD734C845BE9 /* Pods_AlamoFireExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamoFireExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0971467FBD832FCC83A873 /* Pods-AlamoFireExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamoFireExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamoFireExample/Pods-AlamoFireExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,10 +76,12 @@
 			children = (
 				4B7CC76B1EE719C000410BB7 /* AppDelegate.swift */,
 				4B7CC76D1EE719C000410BB7 /* ViewController.swift */,
+				4BDADE0D1EE73ECF000EF9D4 /* FoodClass.swift */,
 				4B7CC76F1EE719C000410BB7 /* Main.storyboard */,
 				4B7CC7721EE719C000410BB7 /* Assets.xcassets */,
 				4B7CC7741EE719C000410BB7 /* LaunchScreen.storyboard */,
 				4B7CC7771EE719C000410BB7 /* Info.plist */,
+				4BDADE0F1EE75071000EF9D4 /* FoodInfoTableViewCell.swift */,
 			);
 			path = AlamoFireExample;
 			sourceTree = "<group>";
@@ -212,6 +218,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B7CC76E1EE719C000410BB7 /* ViewController.swift in Sources */,
+				4BDADE101EE75071000EF9D4 /* FoodInfoTableViewCell.swift in Sources */,
+				4BDADE0E1EE73ECF000EF9D4 /* FoodClass.swift in Sources */,
 				4B7CC76C1EE719C000410BB7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +386,7 @@
 				4B7CC77C1EE719C000410BB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
