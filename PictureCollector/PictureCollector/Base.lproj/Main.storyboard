@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hfP-HO-OCq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="PictureCollector" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UIj-mZ-cYa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HI6-fe-r7m">
+                            <connections>
+                                <segue destination="zIK-0F-BMO" kind="show" id="LrJ-Nw-dVH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.8" y="123.68815592203899"/>
+        </scene>
+        <!--Picture View Controller-->
+        <scene sceneID="GN0-DQ-Gs1">
+            <objects>
+                <viewController id="zIK-0F-BMO" customClass="PictureViewController" customModule="PictureCollector" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gls-QW-vnD"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fwf-9N-tY2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eL0-o0-06C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="K90-I8-w0W">
+                                <rect key="frame" x="47" y="94" width="280" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="PIT-WJ-00G"/>
+                                    <constraint firstAttribute="width" constant="280" id="Tvi-4t-Apc"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6HH-U4-cZV">
+                                <rect key="frame" x="47.5" y="284" width="280" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdb-b4-yJe">
+                                <rect key="frame" x="172" y="341" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addTapped:" destination="zIK-0F-BMO" eventType="touchUpInside" id="qVV-pa-VaU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6HH-U4-cZV" firstAttribute="top" secondItem="K90-I8-w0W" secondAttribute="bottom" constant="40" id="6ar-5d-2h1"/>
+                            <constraint firstItem="6HH-U4-cZV" firstAttribute="centerX" secondItem="eL0-o0-06C" secondAttribute="centerX" id="7FS-lV-q1j"/>
+                            <constraint firstItem="6HH-U4-cZV" firstAttribute="width" secondItem="K90-I8-w0W" secondAttribute="width" id="7o8-1B-vac"/>
+                            <constraint firstItem="K90-I8-w0W" firstAttribute="top" secondItem="Gls-QW-vnD" secondAttribute="bottom" constant="30" id="BP1-iv-dS1"/>
+                            <constraint firstItem="Qdb-b4-yJe" firstAttribute="centerX" secondItem="eL0-o0-06C" secondAttribute="centerX" id="KYr-cb-i9h"/>
+                            <constraint firstItem="K90-I8-w0W" firstAttribute="top" secondItem="Gls-QW-vnD" secondAttribute="bottom" constant="30" id="kem-aT-Vgq"/>
+                            <constraint firstItem="K90-I8-w0W" firstAttribute="centerX" secondItem="eL0-o0-06C" secondAttribute="centerX" id="lFS-nA-yzG"/>
+                            <constraint firstItem="Qdb-b4-yJe" firstAttribute="top" secondItem="6HH-U4-cZV" secondAttribute="bottom" constant="27" id="xQs-TD-rex"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ij3-Lw-r3m">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="camera" id="7HQ-Xl-UXK">
+                                <connections>
+                                    <action selector="cameraTapped:" destination="zIK-0F-BMO" id="sAs-Z2-EAf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Photos" id="Wkt-rK-dZ7">
+                                <connections>
+                                    <action selector="photosTapped:" destination="zIK-0F-BMO" id="1xG-MP-ZUp"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pictureImageView" destination="K90-I8-w0W" id="bjL-4O-aNi"/>
+                        <outlet property="titleTextField" destination="6HH-U4-cZV" id="kU8-8X-MFe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T6f-yf-hsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1823" y="124"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oKX-Pl-S8B">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hfP-HO-OCq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GWF-3D-TpP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="QPv-wJ-gYB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pg6-gj-gUV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="276" y="777.66116941529242"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pic.png" width="220" height="183"/>
+    </resources>
+</document>
