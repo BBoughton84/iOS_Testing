@@ -74,24 +74,52 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a horned sheep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pH-Rt-fi4">
-                                <rect key="frame" x="101" y="504" width="173" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a horned sheep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pH-Rt-fi4">
+                                <rect key="frame" x="100" y="478" width="173" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Catergory: Smily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6S-sq-7k9">
+                                <rect key="frame" x="123" y="514" width="127" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ijI-Ua-kPX">
+                                <rect key="frame" x="112" y="165" width="150" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="BirthYear: 2010" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMc-pW-DHk">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="EeY-xa-p0P"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="GSa-wS-VNm"/>
+                                            <constraint firstAttribute="height" constant="20.5" id="XaA-wC-CS0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="A39-GA-LHI" firstAttribute="centerX" secondItem="cn8-HQ-xpv" secondAttribute="centerX" id="2cf-LS-Kyx"/>
                             <constraint firstItem="A39-GA-LHI" firstAttribute="centerX" secondItem="cn8-HQ-xpv" secondAttribute="centerX" id="6Mw-Ux-PP7"/>
                             <constraint firstItem="3pH-Rt-fi4" firstAttribute="top" secondItem="A39-GA-LHI" secondAttribute="bottom" constant="50" id="Lvn-EP-gRT"/>
+                            <constraint firstItem="O6S-sq-7k9" firstAttribute="centerX" secondItem="cn8-HQ-xpv" secondAttribute="centerX" id="LwD-l4-7G5"/>
                             <constraint firstItem="A39-GA-LHI" firstAttribute="centerX" secondItem="cn8-HQ-xpv" secondAttribute="centerX" id="Vyc-QJ-UOc"/>
                             <constraint firstItem="3pH-Rt-fi4" firstAttribute="centerX" secondItem="cn8-HQ-xpv" secondAttribute="centerX" id="flV-kf-Jhx"/>
+                            <constraint firstItem="A39-GA-LHI" firstAttribute="top" secondItem="hMc-pW-DHk" secondAttribute="bottom" constant="28.5" id="oNz-Y9-G2p"/>
+                            <constraint firstItem="O6S-sq-7k9" firstAttribute="top" secondItem="3pH-Rt-fi4" secondAttribute="bottom" constant="25" id="qd0-qZ-MrQ"/>
                             <constraint firstItem="A39-GA-LHI" firstAttribute="top" secondItem="ah2-Vb-IFj" secondAttribute="bottom" constant="150" id="rlR-Hi-flE"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="birthYearLabel" destination="hMc-pW-DHk" id="cbu-oW-5Uq"/>
+                        <outlet property="categoryLabel" destination="O6S-sq-7k9" id="Yru-xg-ewh"/>
                         <outlet property="definitionLabel" destination="3pH-Rt-fi4" id="ohq-na-Vgk"/>
                         <outlet property="emojiLabel" destination="A39-GA-LHI" id="ZdN-7c-wuZ"/>
                     </connections>
