@@ -1,22 +1,19 @@
 //
-//  ViewControllerTableViewCell.swift
+//  DateDisplayTableViewCell.swift
 //  customTableViewsExample
 //
-//  Created by Bill Boughton on 6/6/17.
+//  Created by Bill Boughton on 6/7/17.
 //  Copyright © 2017 Bill Boughton. All rights reserved.
 //
 
 import UIKit
 
-class ViewControllerTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var myImage: UIImageView!
+class DateDisplayTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var myQuantity: UILabel!
+    @IBOutlet weak var labelDateIn: UILabel!
     
-    @IBOutlet weak var myLabel: UILabel!
-    
+    @IBOutlet weak var labelDateOut: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

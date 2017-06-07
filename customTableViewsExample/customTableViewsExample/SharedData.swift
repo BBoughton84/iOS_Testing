@@ -12,3 +12,8 @@ class SharedData {
     static var items : [AnyObject] = []
 }
 
+class ShareArray {
+    static var datesIn : [Any] = []
+    static var datesOut : [Any] = []
+    static var difference : [NSArray] = []
+}
