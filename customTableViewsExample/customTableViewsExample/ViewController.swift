@@ -11,25 +11,28 @@ import Alamofire
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    @IBOutlet weak var tableView: UITableView!
+
+    
     let animals = ["panda", "lion", "elefant"]
-    var everyThing = [AnyObject]()
+    
+    
 
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animals.count
-    }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
-        cell.myImage.image = UIImage(named: "pic.png")
-        cell.myLabel.text = animals[indexPath.row]
-        return cell
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        getFoodData()
+
+//        tableView.dataSource = self
+//        tableView.delegate = self
         
+        print("hello")
+
+    }
+    
+    func getFoodData() {
         Alamofire.request("https://pantrysupply.herokuapp.com/getall").responseJSON { response in
             //            print(response.request!)  // original URL request
             //            print(response.response!) // HTTP URL response
@@ -41,11 +44,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 if let nextArray = JSON["result"] as! NSArray?{
                     for i in 0..<nextArray.count{
                         var someDict = [String: AnyObject]()
-                        print(i)
-                        //                        print(nextArray.count)
                         let nextTempHolder = nextArray[i] as AnyObject?
-                        //                        print(nextTempHolder!)
-                        //                        let finalHolder = String(describing: nextTempHolder?["quantity"]) as String
                         let finalHolder = nextTempHolder?["quantity"] as! Int
                         let idHolder = nextTempHolder?["item_id"] as! String?
                         let brandNameHolder = nextTempHolder?["brand_name"] as! String?
@@ -54,21 +53,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         someDict["item_name"] = itemName as AnyObject
                         someDict["item_id"] = idHolder as AnyObject
                         someDict["quantity"] = finalHolder as AnyObject
-                        self.everyThing.append(someDict as AnyObject)
+                        SharedData.items.append(someDict as AnyObject)
                     }
-                    print(self.everyThing[0]["brand_item"]!!)
+                    self.tableView.reloadData()
                 }
             }
             
         }
         
     }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SharedData.items.count
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
+        cell.myImage.image = UIImage(named: "pic.png")
+//        cell.myLabel.text = animals[indexPath.row]
+//        cell.myLabel.text = "hello"
+        print(indexPath.row)
+        print(SharedData.items[indexPath.row])
+        cell.myLabel.text = SharedData.items[indexPath.row]["brand_item"] as? String
 
+        return cell
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 

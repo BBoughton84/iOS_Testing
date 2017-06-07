@@ -20,8 +20,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         tableview.dataSource = self
         tableview.delegate = self
+        
         emojis = makeEmojiArray()
         
     }

@@ -8,9 +8,11 @@
 
 import Foundation
 
-class Food {
-    var brand_name = ""
-    var item_id = ""
-    var item_name = ""
-    var quantity = 0
+class Food{
+    static var items :[AnyObject] = []
 }
+//    var brand_name = ""
+//    var item_id = ""
+//    var item_name = ""
+//    var quantity = 0
+
