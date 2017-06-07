@@ -15,6 +15,7 @@
 		4BDADE301EE75AC3000EF9D4 /* pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BDADE2F1EE75AC3000EF9D4 /* pic.png */; };
 		4BDADE321EE75B6B000EF9D4 /* ViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADE311EE75B6B000EF9D4 /* ViewControllerTableViewCell.swift */; };
 		4BDADE341EE85902000EF9D4 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADE331EE85902000EF9D4 /* SharedData.swift */; };
+		4BDADE361EE87083000EF9D4 /* ShowOneFoodItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADE351EE87083000EF9D4 /* ShowOneFoodItemViewController.swift */; };
 		76FD27765F540783EDC14BDC /* Pods_customTableViewsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13C5444A323D0ED8B37E5BC /* Pods_customTableViewsExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		4BDADE2F1EE75AC3000EF9D4 /* pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic.png; sourceTree = "<group>"; };
 		4BDADE311EE75B6B000EF9D4 /* ViewControllerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		4BDADE331EE85902000EF9D4 /* SharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
+		4BDADE351EE87083000EF9D4 /* ShowOneFoodItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowOneFoodItemViewController.swift; sourceTree = "<group>"; };
 		85ADBF2C9F002317DDC9A10C /* Pods-customTableViewsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-customTableViewsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-customTableViewsExample/Pods-customTableViewsExample.release.xcconfig"; sourceTree = "<group>"; };
 		C13C5444A323D0ED8B37E5BC /* Pods_customTableViewsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_customTableViewsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,12 +80,13 @@
 				4BDADE2F1EE75AC3000EF9D4 /* pic.png */,
 				4BDADE1D1EE7595E000EF9D4 /* AppDelegate.swift */,
 				4BDADE1F1EE7595E000EF9D4 /* ViewController.swift */,
-				4BDADE331EE85902000EF9D4 /* SharedData.swift */,
-				4BDADE211EE7595E000EF9D4 /* Main.storyboard */,
+				4BDADE351EE87083000EF9D4 /* ShowOneFoodItemViewController.swift */,
 				4BDADE311EE75B6B000EF9D4 /* ViewControllerTableViewCell.swift */,
+				4BDADE211EE7595E000EF9D4 /* Main.storyboard */,
 				4BDADE241EE7595E000EF9D4 /* Assets.xcassets */,
 				4BDADE261EE7595E000EF9D4 /* LaunchScreen.storyboard */,
 				4BDADE291EE7595E000EF9D4 /* Info.plist */,
+				4BDADE331EE85902000EF9D4 /* SharedData.swift */,
 			);
 			path = customTableViewsExample;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				4BDADE341EE85902000EF9D4 /* SharedData.swift in Sources */,
 				4BDADE201EE7595E000EF9D4 /* ViewController.swift in Sources */,
 				4BDADE1E1EE7595E000EF9D4 /* AppDelegate.swift in Sources */,
+				4BDADE361EE87083000EF9D4 /* ShowOneFoodItemViewController.swift in Sources */,
 				4BDADE321EE75B6B000EF9D4 /* ViewControllerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

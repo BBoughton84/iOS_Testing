@@ -11,33 +11,15 @@ import Alamofire
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
     @IBOutlet weak var tableView: UITableView!
-
-    
-    let animals = ["panda", "lion", "elefant"]
-    
-    
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getFoodData()
-
-//        tableView.dataSource = self
-//        tableView.delegate = self
-        
-        print("hello")
-
     }
     
     func getFoodData() {
         Alamofire.request("https://pantrysupply.herokuapp.com/getall").responseJSON { response in
-            //            print(response.request!)  // original URL request
-            //            print(response.response!) // HTTP URL response
-            //            print(response.data!)     // server data
-            //            print(response.result)   // result of response serialization
             
             if let JSON = response.result.value as AnyObject?{
                 //                print("JSON: \(JSON)")
@@ -69,14 +51,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
-        cell.myImage.image = UIImage(named: "pic.png")
-//        cell.myLabel.text = animals[indexPath.row]
-//        cell.myLabel.text = "hello"
-        print(indexPath.row)
-        print(SharedData.items[indexPath.row])
+        cell.myQuantity.text = String(describing: SharedData.items[indexPath.row]["quantity"]!!)
         cell.myLabel.text = SharedData.items[indexPath.row]["brand_item"] as? String
-
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexClicked = indexPath.row
+        performSegue(withIdentifier: "moveSegue", sender: indexClicked)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let showOne = segue.destination as! ShowOneFoodItemViewController
+        showOne.indexOfItem = sender as! Int
+        
     }
     
     override func didReceiveMemoryWarning() {
