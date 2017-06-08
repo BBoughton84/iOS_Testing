@@ -34,7 +34,6 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view.
         idHolder = SharedData.items[indexOfItem]["item_id"] as! String
         getMoreFoodData(idHolder: idHolder)
-//        print(idHolder)
         textItemDisplay.text = SharedData.items[indexOfItem]["brand_item"] as? String
         textNameDisplay.text = SharedData.items[indexOfItem]["item_name"] as? String
         quantityDisplay.text = String(describing: SharedData.items[indexOfItem]["quantity"]!!)
@@ -44,7 +43,6 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
     }
 
     func getMoreFoodData(idHolder: String){
-        print(idHolder)
         Alamofire.request("https://pantrysupply.herokuapp.com/getone/\(idHolder)").responseJSON { response in
             
             if let JSON = response.result.value as AnyObject?{
@@ -52,13 +50,8 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
                 self.arrayDateIN = (JSON["date_added"] as! NSArray) as! [NSArray]
                 ShareArray.datesIn = (JSON["date_added"] as! NSArray) as! [Any]
                 ShareArray.datesOut = (JSON["date_removed"] as! NSArray) as! [Any]
-//                self.arrayDateOUT = (JSON["date_removed"] as! NSArray) as! [NSArray]
-//                self.difference = (JSON["difference"] as! NSArray) as! [NSArray]
-//                print(ShareArray.datesIn)
-//                print(ShareArray.datesOut)
 
                 self.tableView.reloadData()
-
             }
         }
     }
@@ -70,11 +63,33 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let datecell = tableView.dequeueReusableCell(withIdentifier: "datecell", for: indexPath) as! DateDisplayTableViewCell
-        print(indexPath.row)
-        print(ShareArray.datesIn[indexPath.row])
-        datecell.labelDateIn.text = ShareArray.datesIn[indexPath.row] as? String
+        
+        let str = ShareArray.datesIn[indexPath.row] as? String
+        let shortStr = String(str!.characters.dropLast(4))
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EE, dd MM yyyy HH:mm:ss"
+        let ns_date1 = dateFormatter.date(from: shortStr)
+        dateFormatter.dateFormat = "EE, MMM d"
+        let shorterDate = dateFormatter.string(from: ns_date1!)
+        
+        datecell.labelDateIn.text = shorterDate
+        
+        
         if (indexPath.row < ShareArray.datesOut.count) {
-            datecell.labelDateOut.text = ShareArray.datesOut[indexPath.row] as? String
+            
+            let longDateOut = ShareArray.datesIn[indexPath.row] as? String
+            let shortDateOut = String(longDateOut!.characters.dropLast(4))
+            
+            let dateFormatterOUT = DateFormatter()
+            dateFormatterOUT.dateFormat = "EE, dd MM yyyy HH:mm:ss"
+            
+            let ns_date2 = dateFormatterOUT.date(from: shortDateOut)
+            dateFormatterOUT.dateFormat = "EE, MMM d"
+            let shorterDateOUT = dateFormatterOUT.string(from: ns_date2!)
+            
+            datecell.labelDateOut.text = shorterDateOUT
+            
         } else {
             datecell.labelDateOut.text = "-"
         }
