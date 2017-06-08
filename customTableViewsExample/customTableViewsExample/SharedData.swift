@@ -15,5 +15,5 @@ class SharedData {
 class ShareArray {
     static var datesIn : [Any] = []
     static var datesOut : [Any] = []
-    static var difference : [NSArray] = []
+    static var difference : [Any] = []
 }

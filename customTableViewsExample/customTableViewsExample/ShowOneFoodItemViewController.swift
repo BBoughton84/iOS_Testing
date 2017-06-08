@@ -15,10 +15,11 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var dateInStatic: UILabel!
     @IBOutlet weak var dateOutStatic: UILabel!
     
+
     @IBOutlet weak var quantityDisplay: UILabel!
     @IBOutlet weak var textNameDisplay: UILabel!
     @IBOutlet weak var textItemDisplay: UILabel!
-
+    @IBOutlet weak var aveDay: UILabel!
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -50,7 +51,8 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
                 self.arrayDateIN = (JSON["date_added"] as! NSArray) as! [NSArray]
                 ShareArray.datesIn = (JSON["date_added"] as! NSArray) as! [Any]
                 ShareArray.datesOut = (JSON["date_removed"] as! NSArray) as! [Any]
-
+                ShareArray.difference = (JSON["difference"] as! NSArray) as! [Any]
+                self.aveDay.text = JSON["ave_day"] as? String
                 self.tableView.reloadData()
             }
         }
@@ -64,7 +66,7 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let datecell = tableView.dequeueReusableCell(withIdentifier: "datecell", for: indexPath) as! DateDisplayTableViewCell
         
-        let str = ShareArray.datesIn[indexPath.row] as? String
+        let str = ShareArray.datesIn[((ShareArray.datesIn.count - indexPath.row) - 1)] as? String
         let shortStr = String(str!.characters.dropLast(4))
         
         let dateFormatter = DateFormatter()
@@ -75,10 +77,13 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
         
         datecell.labelDateIn.text = shorterDate
         
-        
-        if (indexPath.row < ShareArray.datesOut.count) {
+        if (indexPath.row < (ShareArray.datesIn.count - ShareArray.datesOut.count)) {
             
-            let longDateOut = ShareArray.datesIn[indexPath.row] as? String
+            datecell.labelDateOut.text = "-"
+            
+        } else {
+            
+            let longDateOut = ShareArray.datesIn[((ShareArray.datesIn.count - indexPath.row) - 1)] as? String
             let shortDateOut = String(longDateOut!.characters.dropLast(4))
             
             let dateFormatterOUT = DateFormatter()
@@ -90,13 +95,35 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
             
             datecell.labelDateOut.text = shorterDateOUT
             
-        } else {
-            datecell.labelDateOut.text = "-"
         }
+        
+        
         return datecell
     }
     
-    
+    @IBAction func increaseQuantity(_ sender: Any) {
+
+        let currentDisplayQuantity = quantityDisplay.text
+        let increasedDisplayHolder = Int(currentDisplayQuantity!)! + 1
+        quantityDisplay.text = String(describing: increasedDisplayHolder)
+
+        //next do the httpGET call to actually increase the quantity
+        
+        
+    }
+    @IBAction func decreaseQuantity(_ sender: Any) {
+        
+        if quantityDisplay.text == "0" {
+            print("Item is already at zero")
+        } else {
+            let currentDisplayQuantity = quantityDisplay.text
+            let decreasedDisplayHolder = Int(currentDisplayQuantity!)! - 1
+            quantityDisplay.text = String(describing: decreasedDisplayHolder)
+            
+            // ext do the httpGET call to actually DEcrease the quantity
+        }
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
