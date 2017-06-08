@@ -13,8 +13,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        getFoodData()
+//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         getFoodData()
     }
     
@@ -24,6 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if let JSON = response.result.value as AnyObject?{
                 //                print("JSON: \(JSON)")
                 if let nextArray = JSON["result"] as! NSArray?{
+                    SharedData.items.removeAll()
                     for i in 0..<nextArray.count{
                         var someDict = [String: AnyObject]()
                         let nextTempHolder = nextArray[i] as AnyObject?

@@ -152,7 +152,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DD2-2U-sXl">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date Out" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DD2-2U-sXl">
                                                 <rect key="frame" x="171" y="0.0" width="129" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.41017648963730569" green="0.030351378761821597" blue="0.0094144807749482525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -161,6 +161,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="dFL-2c-9Es" firstAttribute="centerX" secondItem="PW4-cR-8Gw" secondAttribute="centerX" id="CWP-hA-Oqn"/>
+                                            <constraint firstAttribute="trailing" secondItem="DD2-2U-sXl" secondAttribute="trailing" constant="5" id="wSn-7w-c6j"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>

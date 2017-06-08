@@ -41,6 +41,11 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
         dateInStatic.text = "Date In"
         dateOutStatic.text = "Date Out"
         
+//        let testHolder = SharedData.items[indexOfItem]["quantity"] as! Int!
+//        let nextTestHolder = Int(testHolder!) + 1
+//        print(nextTestHolder)
+//        SharedData.items[indexOfItem]["quantity"] += 1 as Any!
+        
     }
 
     func getMoreFoodData(idHolder: String){
@@ -83,7 +88,7 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
             
         } else {
             
-            let longDateOut = ShareArray.datesIn[((ShareArray.datesIn.count - indexPath.row) - 1)] as? String
+            let longDateOut = ShareArray.datesOut[((ShareArray.datesIn.count - indexPath.row) - 1)] as? String
             let shortDateOut = String(longDateOut!.characters.dropLast(4))
             
             let dateFormatterOUT = DateFormatter()
@@ -106,8 +111,42 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
         let currentDisplayQuantity = quantityDisplay.text
         let increasedDisplayHolder = Int(currentDisplayQuantity!)! + 1
         quantityDisplay.text = String(describing: increasedDisplayHolder)
+        
+        print(idHolder)
+        
+        Alamofire.request("https://pantrysupply.herokuapp.com/adjustup/\(idHolder)").responseJSON { responseUp in
+            if let dataFromAdjustUp = responseUp.result.value as AnyObject?{
+                print("JSON: \(dataFromAdjustUp)")
+            }
+            self.tableView.reloadData()
+//            ViewController().tableView.reloadData()
+        }
+        
+        Alamofire.request("https://pantrysupply.herokuapp.com/getall").responseJSON { response in
+            
+            if let JSON = response.result.value as AnyObject?{
+                //                print("JSON: \(JSON)")
+                if let nextArray = JSON["result"] as! NSArray?{
+                    SharedData.items.removeAll()
+                    for i in 0..<nextArray.count{
+                        var someDict = [String: AnyObject]()
+                        let nextTempHolder = nextArray[i] as AnyObject?
+                        let finalHolder = nextTempHolder?["quantity"] as! Int
+                        let idHolder = nextTempHolder?["item_id"] as! String?
+                        let brandNameHolder = nextTempHolder?["brand_name"] as! String?
+                        let itemName = nextTempHolder?["item_name"] as! String?
+                        someDict["brand_item"] = brandNameHolder! as AnyObject
+                        someDict["item_name"] = itemName as AnyObject
+                        someDict["item_id"] = idHolder as AnyObject
+                        someDict["quantity"] = finalHolder as AnyObject
+                        SharedData.items.append(someDict as AnyObject)
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+            
+        }
 
-        //next do the httpGET call to actually increase the quantity
         
         
     }
@@ -120,7 +159,40 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
             let decreasedDisplayHolder = Int(currentDisplayQuantity!)! - 1
             quantityDisplay.text = String(describing: decreasedDisplayHolder)
             
-            // ext do the httpGET call to actually DEcrease the quantity
+            Alamofire.request("https://pantrysupply.herokuapp.com/adjustdown/\(idHolder)").responseJSON { responseDown in
+                if let dataFromAdjustDown = responseDown.result.value as Any?{
+                    print("JSON: \(dataFromAdjustDown)")
+                }
+                self.tableView.reloadData()
+//                ViewController().tableView.reloadData()
+
+            }
+            
+            Alamofire.request("https://pantrysupply.herokuapp.com/getall").responseJSON { response in
+                
+                if let JSON = response.result.value as AnyObject?{
+                    //                print("JSON: \(JSON)")
+                    if let nextArray = JSON["result"] as! NSArray?{
+                        SharedData.items.removeAll()
+                        for i in 0..<nextArray.count{
+                            var someDict = [String: AnyObject]()
+                            let nextTempHolder = nextArray[i] as AnyObject?
+                            let finalHolder = nextTempHolder?["quantity"] as! Int
+                            let idHolder = nextTempHolder?["item_id"] as! String?
+                            let brandNameHolder = nextTempHolder?["brand_name"] as! String?
+                            let itemName = nextTempHolder?["item_name"] as! String?
+                            someDict["brand_item"] = brandNameHolder! as AnyObject
+                            someDict["item_name"] = itemName as AnyObject
+                            someDict["item_id"] = idHolder as AnyObject
+                            someDict["quantity"] = finalHolder as AnyObject
+                            SharedData.items.append(someDict as AnyObject)
+                        }
+                        self.tableView.reloadData()
+                    }
+                }
+                
+            }
+
         }
         
     }
