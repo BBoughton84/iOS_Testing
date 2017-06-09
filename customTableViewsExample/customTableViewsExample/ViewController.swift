@@ -59,7 +59,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
         cell.myQuantity.text = String(describing: SharedData.items[indexPath.row]["quantity"]!!)
-        cell.myLabel.text = SharedData.items[indexPath.row]["brand_item"] as? String
+        cell.myLabel.text = SharedData.items[indexPath.row]["item_name"] as? String
+        cell.myBrandName.text = SharedData.items[indexPath.row]["brand_item"] as? String
         return cell
     }
     
@@ -69,9 +70,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let showOne = segue.destination as! ShowOneFoodItemViewController
-        showOne.indexOfItem = sender as! Int
-        
+
+        if (segue.identifier == "moveSegue"){
+            let showOne = segue.destination as! ShowOneFoodItemViewController
+            showOne.indexOfItem = sender as! Int
+            
+        } else if (segue.identifier == "manualEntry") {
+            segue.destination as! ManAddViewController
+        }
+
+    }
+    
+    @IBAction func addNewItem(_ sender: Any) {
+        performSegue(withIdentifier: "manualEntry", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

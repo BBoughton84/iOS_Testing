@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B7472FF1EE89D9300ECE0B8 /* DateDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7472FE1EE89D9300ECE0B8 /* DateDisplayTableViewCell.swift */; };
+		4BC299211EEB4000009D560B /* ManAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC299201EEB4000009D560B /* ManAddViewController.swift */; };
 		4BDADE1E1EE7595E000EF9D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADE1D1EE7595E000EF9D4 /* AppDelegate.swift */; };
 		4BDADE201EE7595E000EF9D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDADE1F1EE7595E000EF9D4 /* ViewController.swift */; };
 		4BDADE231EE7595E000EF9D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BDADE211EE7595E000EF9D4 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		23CEF2FFCF0214E51195462A /* Pods-customTableViewsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-customTableViewsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-customTableViewsExample/Pods-customTableViewsExample.debug.xcconfig"; sourceTree = "<group>"; };
 		4B7472FE1EE89D9300ECE0B8 /* DateDisplayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		4BC299201EEB4000009D560B /* ManAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManAddViewController.swift; sourceTree = "<group>"; };
 		4BDADE1A1EE7595E000EF9D4 /* customTableViewsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = customTableViewsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BDADE1D1EE7595E000EF9D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BDADE1F1EE7595E000EF9D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				4BDADE1D1EE7595E000EF9D4 /* AppDelegate.swift */,
 				4BDADE1F1EE7595E000EF9D4 /* ViewController.swift */,
 				4BDADE351EE87083000EF9D4 /* ShowOneFoodItemViewController.swift */,
+				4BC299201EEB4000009D560B /* ManAddViewController.swift */,
 				4BDADE311EE75B6B000EF9D4 /* ViewControllerTableViewCell.swift */,
 				4B7472FE1EE89D9300ECE0B8 /* DateDisplayTableViewCell.swift */,
 				4BDADE211EE7595E000EF9D4 /* Main.storyboard */,
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BC299211EEB4000009D560B /* ManAddViewController.swift in Sources */,
 				4B7472FF1EE89D9300ECE0B8 /* DateDisplayTableViewCell.swift in Sources */,
 				4BDADE341EE85902000EF9D4 /* SharedData.swift in Sources */,
 				4BDADE201EE7595E000EF9D4 /* ViewController.swift in Sources */,

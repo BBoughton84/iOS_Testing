@@ -18,6 +18,8 @@ class ViewControllerTableViewCell: UITableViewCell {
     @IBOutlet weak var myLabel: UILabel!
     
     
+    @IBOutlet weak var myBrandName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
