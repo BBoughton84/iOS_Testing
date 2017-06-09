@@ -167,7 +167,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FT3-XI-st4">
-                                <rect key="frame" x="0.0" y="259" width="375" height="408"/>
+                                <rect key="frame" x="0.0" y="259" width="375" height="336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -222,6 +222,16 @@
                                     <action selector="decreaseQuantity:" destination="KAR-Br-xRu" eventType="touchUpInside" id="WQm-cn-oz1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vO7-0k-0gw">
+                                <rect key="frame" x="147.5" y="611" width="80" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="1" green="0.029831843470767838" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeItem:" destination="KAR-Br-xRu" eventType="touchUpInside" id="aua-na-oRc"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIK-sR-ORj">
                                 <rect key="frame" x="314" y="159.5" width="59" height="30"/>
                                 <state key="normal" title="Increase"/>
@@ -237,6 +247,8 @@
                             <constraint firstAttribute="trailing" secondItem="cIK-sR-ORj" secondAttribute="trailing" constant="2" id="Ijn-Os-Ids"/>
                             <constraint firstItem="YJV-qD-ZPi" firstAttribute="centerX" secondItem="UbD-5r-8KB" secondAttribute="centerX" id="Jpe-DI-5Dv"/>
                             <constraint firstItem="cIK-sR-ORj" firstAttribute="top" secondItem="X4c-dm-od6" secondAttribute="bottom" constant="5" id="Psq-Xv-VT6"/>
+                            <constraint firstItem="cWi-gU-BJ3" firstAttribute="top" secondItem="vO7-0k-0gw" secondAttribute="bottom" constant="10" id="W5U-fz-G5c"/>
+                            <constraint firstItem="vO7-0k-0gw" firstAttribute="centerX" secondItem="UbD-5r-8KB" secondAttribute="centerX" id="W5u-0r-FW7"/>
                             <constraint firstAttribute="trailing" secondItem="cIK-sR-ORj" secondAttribute="trailing" constant="2" id="WTc-cN-YOW"/>
                             <constraint firstAttribute="trailing" secondItem="Xpg-bf-5CC" secondAttribute="trailing" constant="2" id="cMH-so-uhO"/>
                             <constraint firstItem="YJV-qD-ZPi" firstAttribute="top" secondItem="DOm-u5-fBs" secondAttribute="bottom" constant="30" id="eOD-Wh-fbB"/>

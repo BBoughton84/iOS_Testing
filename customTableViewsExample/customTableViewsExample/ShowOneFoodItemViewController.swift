@@ -37,14 +37,10 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
         getMoreFoodData(idHolder: idHolder)
         textItemDisplay.text = SharedData.items[indexOfItem]["brand_item"] as? String
         textNameDisplay.text = SharedData.items[indexOfItem]["item_name"] as? String
+
         quantityDisplay.text = String(describing: SharedData.items[indexOfItem]["quantity"]!!)
         dateInStatic.text = "Date In"
         dateOutStatic.text = "Date Out"
-        
-//        let testHolder = SharedData.items[indexOfItem]["quantity"] as! Int!
-//        let nextTestHolder = Int(testHolder!) + 1
-//        print(nextTestHolder)
-//        SharedData.items[indexOfItem]["quantity"] += 1 as Any!
         
     }
 
@@ -96,6 +92,7 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
             
             let ns_date2 = dateFormatterOUT.date(from: shortDateOut)
             dateFormatterOUT.dateFormat = "EE, MMM d"
+            
             let shorterDateOUT = dateFormatterOUT.string(from: ns_date2!)
             
             datecell.labelDateOut.text = shorterDateOUT
@@ -112,14 +109,21 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
         let increasedDisplayHolder = Int(currentDisplayQuantity!)! + 1
         quantityDisplay.text = String(describing: increasedDisplayHolder)
         
-        print(idHolder)
+        let strDate = String(describing: Date())
+        let updateOUT = DateFormatter()
+        updateOUT.dateFormat = "yyyy-MM-dd HH:mm:ssZZZZ"
+        let ns_date3 = updateOUT.date(from: strDate)
+        updateOUT.dateFormat = "EE, dd MMM yyyy HH:mm:ss ZZZZ"
+        let longDate = updateOUT.string(from: ns_date3!)
+        let shortDate = String(longDate.characters.dropLast(6))
+        ShareArray.datesIn.append(shortDate)
+        self.tableView.reloadData()
         
         Alamofire.request("https://pantrysupply.herokuapp.com/adjustup/\(idHolder)").responseJSON { responseUp in
             if let dataFromAdjustUp = responseUp.result.value as AnyObject?{
                 print("JSON: \(dataFromAdjustUp)")
             }
             self.tableView.reloadData()
-//            ViewController().tableView.reloadData()
         }
         
         Alamofire.request("https://pantrysupply.herokuapp.com/getall").responseJSON { response in
@@ -159,13 +163,22 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
             let decreasedDisplayHolder = Int(currentDisplayQuantity!)! - 1
             quantityDisplay.text = String(describing: decreasedDisplayHolder)
             
+            let strDate = String(describing: Date())
+            let updateOUT = DateFormatter()
+            updateOUT.dateFormat = "yyyy-MM-dd HH:mm:ssZZZZ"
+            let ns_date3 = updateOUT.date(from: strDate)
+            updateOUT.dateFormat = "EE, dd MMM yyyy HH:mm:ss ZZZZ"
+            let longDate = updateOUT.string(from: ns_date3!)
+            let shortDate = String(longDate.characters.dropLast(6))
+            ShareArray.datesOut.append(shortDate)
+            self.tableView.reloadData()
+
+            
             Alamofire.request("https://pantrysupply.herokuapp.com/adjustdown/\(idHolder)").responseJSON { responseDown in
                 if let dataFromAdjustDown = responseDown.result.value as Any?{
                     print("JSON: \(dataFromAdjustDown)")
                 }
                 self.tableView.reloadData()
-//                ViewController().tableView.reloadData()
-
             }
             
             Alamofire.request("https://pantrysupply.herokuapp.com/getall").responseJSON { response in
@@ -195,6 +208,53 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
 
         }
         
+    }
+    
+    @IBAction func removeItem(_ sender: Any) {
+        let refreshAlert = UIAlertController(title: "Delete", message: "Are you sure you want to completely remove this item?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            print("send delete request and move back to main page")
+            let sendToDelete: Parameters = ["item_id":self.idHolder]
+            print(sendToDelete)
+            
+            Alamofire.request("https://pantrysupply.herokuapp.com/delete/\(self.idHolder)", method: .delete).responseJSON { response in
+                print(response.request!)
+            }
+            
+            Alamofire.request("https://pantrysupply.herokuapp.com/getall").responseJSON { response in
+                
+                if let JSON = response.result.value as AnyObject?{
+                    //                print("JSON: \(JSON)")
+                    if let nextArray = JSON["result"] as! NSArray?{
+                        SharedData.items.removeAll()
+                        for i in 0..<nextArray.count{
+                            var someDict = [String: AnyObject]()
+                            let nextTempHolder = nextArray[i] as AnyObject?
+                            let finalHolder = nextTempHolder?["quantity"] as! Int
+                            let idHolder = nextTempHolder?["item_id"] as! String?
+                            let brandNameHolder = nextTempHolder?["brand_name"] as! String?
+                            let itemName = nextTempHolder?["item_name"] as! String?
+                            someDict["brand_item"] = brandNameHolder! as AnyObject
+                            someDict["item_name"] = itemName as AnyObject
+                            someDict["item_id"] = idHolder as AnyObject
+                            someDict["quantity"] = finalHolder as AnyObject
+                            SharedData.items.append(someDict as AnyObject)
+                        }
+                        self.tableView.reloadData()
+                    }
+                }
+                
+            }
+            
+            self.navigationController!.popViewController(animated: true)
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel Logic here")
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

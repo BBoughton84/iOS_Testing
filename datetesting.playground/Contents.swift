@@ -2,71 +2,61 @@
 
 import UIKit
 
-//extension Date {
-//    var localTime: String {
-//        return description(with: Locale.current)
-//    }
-//}
-//
-//@IBAction func datePickerChanged(_ sender: UIDatePicker) {
-//    let formatter = DateFormatter()
-//    formatter.dateFormat = "dd.MM.yyyy HH:mm"
-//    
-//    let dateLabel.text = formatter.string(from: sender.date)
-//    print(dateLabel)
-//}
 
 
-//var name: String = "Fri, 22 Jun 2017 20:25:59 GMT"
-//let endIndex = name.index(name.endIndex, offsetBy: -4)
-//let truncated = name.substring(to: endIndex)
-//print(name)
-//print(truncated)
-//
-//let str = "Fri, 02 Jun 2017 20:25:59 GMT"
-//let result = String(str.characters.dropLast(4))
+////let str = ShareArray.datesIn[indexPath.row] as? String
+//let longDateOut = "Fri, 02 Jun 2017 19:56:59 GMT"
+//let shortDateOut = String(longDateOut.characters.dropLast(4))
 //
 //
-//let dateFormatter = DateFormatter()
-//dateFormatter.dateFormat = "EE, dd MM yyyy HH:mm:ss"
-////dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//let dateFormatterOUT = DateFormatter()
+//dateFormatterOUT.dateFormat = "EE, dd MM yyyy HH:mm:ss"
 //
-////let ns_date1 = dateFormatter.date(from: "Fri, 02 Jun 2017 20:25:59")
-//let ns_date1 = dateFormatter.date(from: result)
+//let ns_date2 = dateFormatterOUT.date(from: shortDateOut)
 //
-////dateFormatter.dateFormat = "EE, MM-dd @ hh':'mm a"
-//dateFormatter.dateFormat = "EE, MMM d"
+//dateFormatterOUT.dateFormat = "EE, MMM d"
+//
+//let shorterDateOUT = dateFormatterOUT.string(from: ns_date2!)
+//print(shorterDateOUT)
+
+ var datesOut : [Any] = []
+
+
+
+//let longDateOut = ShareArray.datesOut[((ShareArray.datesIn.count - indexPath.row) - 1)] as? String
+//let shortDateOut = String(longDateOut!.characters.dropLast(4))
+
+//let dateFormatterOUT = DateFormatter()
+//dateFormatterOUT.dateFormat = Date()
+//let ns_date2 = dateFormatterOUT.date(from: Date())
+//dateFormatterOUT.dateFormat = "EE, MMM d"
+//let shorterDateOUT = dateFormatterOUT.string(from: ns_date2!)
+//
+//print(shorterDateOUT)
+
+//
+//let strDate = String(describing: Date())
+//let updateOUT = DateFormatter()
+//updateOUT.dateFormat = "yyyy-MM-dd HH:mm:ssZZZZ"
+//let ns_date3 = updateOUT.date(from: strDate)
+//updateOUT.dateFormat = "EE, dd MMM yyyy HH:mm:ss ZZZZ"
+//let newDateOut = updateOUT.string(from: ns_date3!)
+//let shortDate = String(newDateOut.characters.dropLast(6))
 //
 //
-//let string = dateFormatter.string(from: ns_date1!)
-//
-//print(string)
-
-//MM-dd-yyyy
-//Mon, Jun 02
+//print(shortDate)
 
 
 
-//let str = ShareArray.datesIn[indexPath.row] as? String
-let longDateOut = "Fri, 02 Jun 2017 19:56:59 GMT"
-let shortDateOut = String(longDateOut.characters.dropLast(4))
+let refreshAlert = UIAlertController(title: "Refresh", message: "All data will be lost.", preferredStyle: UIAlertControllerStyle.alert)
 
+refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+    print("Handle Ok logic here")
+}))
 
-let dateFormatterOUT = DateFormatter()
-dateFormatterOUT.dateFormat = "EE, dd MM yyyy HH:mm:ss"
+refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+    print("Handle Cancel Logic here")
+}))
 
-let ns_date2 = dateFormatterOUT.date(from: shortDateOut)
-
-dateFormatterOUT.dateFormat = "EE, MMM d"
-
-let shorterDateOUT = dateFormatterOUT.string(from: ns_date2!)
-print(shorterDateOUT)
-
-
-
-
-
-
-
-
+(refreshAlert, animated: true, completion: nil)
 
