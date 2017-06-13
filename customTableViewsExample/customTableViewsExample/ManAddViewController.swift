@@ -18,7 +18,7 @@ class ManAddViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColor(red:0.94, green:0.96, blue:0.96, alpha:1.0)
         // Do any additional setup after loading the view.
     }
 
@@ -26,9 +26,6 @@ class ManAddViewController: UIViewController {
         let qtyHolder = quantityInput.text!
         let itemNameHolder = itemNameInput.text!
         let brandHolder = brandInput.text!
-        print(qtyHolder)
-        print(itemNameHolder)
-        print(brandHolder)
 
         let dataToSend: Parameters = ["brand_name":brandHolder, "item_name":itemNameHolder, "quantity":qtyHolder]
         

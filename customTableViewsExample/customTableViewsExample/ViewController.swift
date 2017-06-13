@@ -11,6 +11,10 @@ import Alamofire
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let colorsArray = ["green_rz", "yellow_rz", "blue_rz", "orange_rz", "green_rz", "yellow_rz", "blue_rz", "orange_rz", "green_rz", "yellow_rz", "blue_rz", "orange_rz", "green_rz", "yellow_rz", "blue_rz", "orange_rz"]
+    
+    private let refreshControl = UIRefreshControl()
+
     @IBOutlet weak var tableView: UITableView!
     
 //    override func viewDidLoad() {
@@ -22,6 +26,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewWillAppear(true)
         getFoodData()
 
+        
+        refreshControl.addTarget(self, action: #selector(ViewController.refreshData(sender:)), for: .valueChanged)
+        
+        // Add to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+    }
+    
+    func refreshData(sender: UIRefreshControl){
+        getFoodData()
     }
     
     func getFoodData() {
@@ -49,6 +66,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
         }
+    
+
         
     }
     
@@ -57,19 +76,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+
+
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
-        cell.myQuantity.text = String(describing: SharedData.items[indexPath.row]["quantity"]!!)
+        cell.myQuantity.text = "# \(String(describing: SharedData.items[indexPath.row]["quantity"]!!))"
         cell.myLabel.text = SharedData.items[indexPath.row]["item_name"] as? String
         cell.myBrandName.text = SharedData.items[indexPath.row]["brand_item"] as? String
-        cell.myQuantity.textColor = UIColor.black
-        cell.myBrandName.textColor = UIColor.black
-        cell.myLabel.textColor = UIColor.black
+        cell.myQuantity.textColor = UIColor(red:0.23, green:0.21, blue:0.42, alpha:1.0)
+        cell.myBrandName.textColor = UIColor(red:0.23, green:0.21, blue:0.42, alpha:1.0)
+        cell.myLabel.textColor = UIColor(red:0.23, green:0.21, blue:0.42, alpha:1.0)
+        cell.backgroundColor = UIColor(red:0.94, green:0.96, blue:0.96, alpha:1.0)
+        
+        cell.colorBar.image = UIImage(named: (colorsArray[indexPath.row] + ".png"))
+        
+        
         if (String(describing: SharedData.items[indexPath.row]["quantity"]!!) == "0") {
-            print(String(describing: SharedData.items[indexPath.row]["quantity"]!!))
-            print(SharedData.items[indexPath.row]["item_name"] as? String)
             cell.myQuantity.textColor = UIColor.red
             cell.myBrandName.textColor = UIColor.red
             cell.myLabel.textColor = UIColor.red
+            cell.backgroundColor = UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0)
+            cell.colorBar.image = UIImage(named: "red_rz.png")
+
         }
         return cell
     }

@@ -14,6 +14,7 @@ class ViewControllerTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var myQuantity: UILabel!
+    @IBOutlet weak var colorBar: UIImageView!
     
     @IBOutlet weak var myLabel: UILabel!
     

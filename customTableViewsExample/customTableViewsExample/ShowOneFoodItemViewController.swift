@@ -32,15 +32,19 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        self.view.backgroundColor = UIColor(red:0.94, green:0.96, blue:0.96, alpha:1.0)
+
         idHolder = SharedData.items[indexOfItem]["item_id"] as! String
         getMoreFoodData(idHolder: idHolder)
         textItemDisplay.text = SharedData.items[indexOfItem]["brand_item"] as? String
         textNameDisplay.text = SharedData.items[indexOfItem]["item_name"] as? String
+        textNameDisplay.textColor = UIColor(red:0.23, green:0.21, blue:0.42, alpha:1.0)
+        textItemDisplay.textColor = UIColor(red:0.23, green:0.21, blue:0.42, alpha:1.0)
 
         quantityDisplay.text = String(describing: SharedData.items[indexOfItem]["quantity"]!!)
-        dateInStatic.text = "Date In"
-        dateOutStatic.text = "Date Out"
+        dateInStatic.text = "IN"
+        dateOutStatic.text = "OUT"
         
     }
 
@@ -53,7 +57,7 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
                 ShareArray.datesIn = (JSON["date_added"] as! NSArray) as! [Any]
                 ShareArray.datesOut = (JSON["date_removed"] as! NSArray) as! [Any]
                 ShareArray.difference = (JSON["difference"] as! NSArray) as! [Any]
-                self.aveDay.text = JSON["ave_day"] as? String
+                self.aveDay.text = "Average Days - " + String(describing: JSON["ave_day"]!!)
                 self.tableView.reloadData()
             }
         }
@@ -61,7 +65,9 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ShareArray.datesIn.count
+    
+            return ShareArray.datesIn.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,10 +83,14 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
         let shorterDate = dateFormatter.string(from: ns_date1!)
         
         datecell.labelDateIn.text = shorterDate
+        datecell.backgroundColor = UIColor(red:1.00, green:0.98, blue:0.87, alpha:1.0)
+
         
         if (indexPath.row < (ShareArray.datesIn.count - ShareArray.datesOut.count)) {
             
             datecell.labelDateOut.text = "-"
+            datecell.backgroundColor = UIColor(red:1.00, green:0.98, blue:0.87, alpha:1.0)
+
             
         } else {
             
@@ -96,7 +106,8 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
             let shorterDateOUT = dateFormatterOUT.string(from: ns_date2!)
             
             datecell.labelDateOut.text = shorterDateOUT
-            
+            datecell.backgroundColor = UIColor(red:1.00, green:0.98, blue:0.87, alpha:1.0)
+
         }
         
         
