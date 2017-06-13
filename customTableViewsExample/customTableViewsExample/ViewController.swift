@@ -61,6 +61,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.myQuantity.text = String(describing: SharedData.items[indexPath.row]["quantity"]!!)
         cell.myLabel.text = SharedData.items[indexPath.row]["item_name"] as? String
         cell.myBrandName.text = SharedData.items[indexPath.row]["brand_item"] as? String
+        cell.myQuantity.textColor = UIColor.black
+        cell.myBrandName.textColor = UIColor.black
+        cell.myLabel.textColor = UIColor.black
+        if (String(describing: SharedData.items[indexPath.row]["quantity"]!!) == "0") {
+            print(String(describing: SharedData.items[indexPath.row]["quantity"]!!))
+            print(SharedData.items[indexPath.row]["item_name"] as? String)
+            cell.myQuantity.textColor = UIColor.red
+            cell.myBrandName.textColor = UIColor.red
+            cell.myLabel.textColor = UIColor.red
+        }
         return cell
     }
     
