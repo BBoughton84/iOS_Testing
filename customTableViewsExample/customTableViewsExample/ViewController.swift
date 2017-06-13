@@ -62,6 +62,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         SharedData.items.append(someDict as AnyObject)
                     }
                     self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
+
                 }
             }
             
@@ -81,7 +83,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
-        cell.myQuantity.text = "# \(String(describing: SharedData.items[indexPath.row]["quantity"]!!))"
+        cell.myQuantity.text = String(describing: SharedData.items[indexPath.row]["quantity"]!!)
         cell.myLabel.text = SharedData.items[indexPath.row]["item_name"] as? String
         cell.myBrandName.text = SharedData.items[indexPath.row]["brand_item"] as? String
         cell.myQuantity.textColor = UIColor(red:0.23, green:0.21, blue:0.42, alpha:1.0)
