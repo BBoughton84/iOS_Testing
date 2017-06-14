@@ -57,7 +57,7 @@ class ShowOneFoodItemViewController: UIViewController, UITableViewDelegate, UITa
                 ShareArray.datesIn = (JSON["date_added"] as! NSArray) as! [Any]
                 ShareArray.datesOut = (JSON["date_removed"] as! NSArray) as! [Any]
                 ShareArray.difference = (JSON["difference"] as! NSArray) as! [Any]
-                self.aveDay.text = "Average Days - " + String(describing: JSON["ave_day"]!!)
+                self.aveDay.text = String(describing: JSON["ave_day"]!!)
                 self.tableView.reloadData()
             }
         }
